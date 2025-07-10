@@ -1,9 +1,6 @@
-
-import type { ReactNode } from 'react';
-
+import React, { type ReactNode } from 'react';
 import '@/app/global.css';
 import { blogSource } from '@/lib/source';
-
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 
 export default function Layout({ children }: { children: ReactNode }) {
