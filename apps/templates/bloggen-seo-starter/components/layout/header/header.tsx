@@ -26,7 +26,7 @@ export default function Header() {
             role='banner'>
             <div className='mx-auto max-w-7xl px-4 xl:px-0'>
                 <div className='flex h-16 items-center justify-between'>
-                    <div className='flex flex-row items-center gap-2'>
+                    <Link href='/' className='flex flex-row items-center gap-2'>
                         <div className='dark:hidden'>
                             <LogoLight />
                         </div>
@@ -34,7 +34,7 @@ export default function Header() {
                             <LogoDark />
                         </div>
                         <div className='text-canvas-text mt-0.5 flex text-sm font-bold'>SEO Starter</div>
-                    </div>
+                    </Link>
 
                     {/* Desktop nav - hidden on small screens, visible on md and up */}
                     <nav aria-label='Primary navigation' className='hidden items-center space-x-4 md:flex'>
