@@ -16,5 +16,12 @@
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
