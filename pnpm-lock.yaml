@@ -1480,8 +1480,8 @@ packages:
     engines: {node: '>=12.4.0'}
     dev: true
 
-  /@orama/orama@3.1.10:
-    resolution: {integrity: sha512-YNou2xlCIgPhMDe1TBEmp1wsAPFCL7Fd11rct7YfXYYiNAVBNL2rWoEydJRDJFVmqgt0l6mzSg35sDQ3i8yfKQ==}
+  /@orama/orama@3.1.11:
+    resolution: {integrity: sha512-Szki0cgFiXE5F9RLx2lUyEtJllnuCSQ4B8RLDwIjXkVit6qZjoDAxH+xhJs29MjKLDz0tbPLdKFa6QrQ/qoGGA==}
     engines: {node: '>= 20.0.0'}
     dev: false
 
@@ -4484,7 +4484,7 @@ packages:
         optional: true
     dependencies:
       '@formatjs/intl-localematcher': 0.6.1
-      '@orama/orama': 3.1.10
+      '@orama/orama': 3.1.11
       '@shikijs/rehype': 3.7.0
       '@shikijs/transformers': 3.7.0
       '@types/react': 19.1.8
