@@ -44,7 +44,7 @@ export default function Footer() {
                                 <div className='hidden dark:block'>
                                     <LogoDark />
                                 </div>
-                                <div className='text-canvas-text mt-0.5 flex text-sm font-bold'>SaaS Starter</div>
+                                <div className='text-canvas-text mt-0.5 flex text-sm font-bold'>SaaS Starter Better Auth</div>
                             </div>
                             <nav className='flex flex-wrap gap-4'>
                                 {NAV_ITEMS.map(({ href, label }) => (
