@@ -42,7 +42,7 @@ export default function Page() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            By{" "} SilverThreadLabs
+            By{" "}
             <Image
               alt="Vercel Logo"
               className="dark:invert"
