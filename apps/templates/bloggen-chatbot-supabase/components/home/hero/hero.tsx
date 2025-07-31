@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowRight, FaCheck, FaCopy, FaGithub, FaPlay, FaStar, FaUsers, FaRocket, FaRobot, FaComments, FaBrain, FaMicrophone, FaKeyboard, FaGlobe, FaShieldAlt, FaInfinity, FaMagic } from 'react-icons/fa';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import Link from 'next/link';
 
 export default function Hero() {

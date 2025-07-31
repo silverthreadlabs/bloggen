@@ -4,7 +4,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import PlayGroundCard from '@/components/home/designrift/playground-card';
 
 import { motion } from 'framer-motion';

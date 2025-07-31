@@ -15,9 +15,9 @@
   "author": "Silverthread Labs Team <silverthreadlabs@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev --port 3007 --turbopack",
+    "dev": "next dev --port 3004 --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "next start",  
     "lint": "next lint --max-warnings 0",
     "prettier-fix": "prettier --write .",
     "supabase:start": "npx supabase start",
@@ -33,6 +33,7 @@
     "supabase:pull": "npx supabase db pull"
   },
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "@calcom/embed-react": "^1.5.3",
     "@emailjs/browser": "^4.4.1",
     "@next/third-parties": "^15.3.2",

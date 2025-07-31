@@ -5,7 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { Pricing } from '@/components/blocks/pricing';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaCheck, FaGithub, FaRocket } from 'react-icons/fa';

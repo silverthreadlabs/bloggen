@@ -8,7 +8,7 @@ import {
 } from '@/components/botui/tooltip';
 
 import { SidebarLeftIcon } from './icons';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 
 export function SidebarToggle({
   className,

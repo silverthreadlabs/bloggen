@@ -8,7 +8,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import type { User } from '@supabase/supabase-js';
 
 interface NavlinksProps {

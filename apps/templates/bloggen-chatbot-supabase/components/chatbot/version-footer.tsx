@@ -10,7 +10,7 @@ import type { Document } from '@/types_db';
 import { getDocumentTimestampByIndex } from '@/lib/utils';
 
 import { LoaderIcon } from './icons';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import { useArtifact } from '@/hooks/use-artifact';
 
 interface VersionFooterProps {

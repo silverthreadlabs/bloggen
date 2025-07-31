@@ -19,8 +19,8 @@ import { useSWRConfig } from 'swr';
 
 import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons';
 import { PreviewAttachment } from './preview-attachment';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/input';
+import { Button } from '@repo/ui/button';
+import { Textarea } from '@repo/ui/input';
 import { SuggestedActions } from './suggested-actions';
 import equal from 'fast-deep-equal';
 import type { UseChatHelpers } from '@ai-sdk/react';

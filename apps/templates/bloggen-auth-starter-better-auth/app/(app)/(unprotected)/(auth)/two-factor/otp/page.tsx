@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@repo/ui/button";
 import {
 	Card,
 	CardContent,
@@ -8,7 +8,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Input } from "@repo/ui/input";
 import { Label } from "@/components/ui/label";
 import { client } from "@/lib/auth/auth-client";
 import { AlertCircle, CheckCircle2, Mail } from "lucide-react";

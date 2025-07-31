@@ -6,7 +6,7 @@ import { useWindowSize } from 'usehooks-ts';
 
 import { ModelSelector } from '@/components/chatbot/model-selector';
 import { SidebarToggle } from '@/components/chatbot/sidebar-toggle';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import { PlusIcon, VercelIcon } from './icons';
 import { useSidebar } from '../botui/sidebar';
 import { memo } from 'react';

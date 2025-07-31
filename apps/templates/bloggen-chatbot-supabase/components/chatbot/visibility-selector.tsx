@@ -1,7 +1,7 @@
 'use client';
 
 import { type ReactNode, useMemo, useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,

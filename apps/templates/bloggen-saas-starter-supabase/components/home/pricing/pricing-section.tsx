@@ -6,7 +6,7 @@ import { getErrorRedirect } from '@/utils/helpers';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import Link from 'next/link';
 
 type Product = Tables<'products'> & { prices: Tables<'prices'>[] };

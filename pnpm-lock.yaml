@@ -135,6 +135,9 @@ importers:
       '@react-email/components':
         specifier: ^0.1.1
         version: 0.1.1(react-dom@19.1.1)(react@19.1.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../../packages/ui
       '@tailwindcss/postcss':
         specifier: 4.1.11
         version: 4.1.11
@@ -373,6 +376,9 @@ importers:
       '@radix-ui/react-toast':
         specifier: ^1.1.5
         version: 1.2.14(@types/react-dom@19.1.7)(@types/react@19.1.8)(react-dom@19.1.1)(react@19.1.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../../packages/ui
       '@supabase/ssr':
         specifier: ^0.6.1
         version: 0.6.1(@supabase/supabase-js@2.53.0)
@@ -617,6 +623,9 @@ importers:
       '@radix-ui/react-visually-hidden':
         specifier: ^1.1.0
         version: 1.2.3(@types/react-dom@19.1.7)(@types/react@19.1.8)(react-dom@19.1.1)(react@19.1.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../../packages/ui
       '@stripe/stripe-js':
         specifier: 2.4.0
         version: 2.4.0
@@ -972,6 +981,9 @@ importers:
       '@react-email/components':
         specifier: ^0.1.1
         version: 0.1.1(react-dom@19.1.1)(react@19.1.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../../packages/ui
       '@tailwindcss/postcss':
         specifier: 4.1.11
         version: 4.1.11
@@ -1213,6 +1225,9 @@ importers:
       '@radix-ui/react-toast':
         specifier: ^1.1.5
         version: 1.2.14(@types/react-dom@19.1.7)(@types/react@19.1.8)(react-dom@19.1.1)(react@19.1.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../../packages/ui
       '@stripe/stripe-js':
         specifier: 2.4.0
         version: 2.4.0
@@ -1400,6 +1415,9 @@ importers:
       '@radix-ui/react-tabs':
         specifier: ^1.1.12
         version: 1.1.12(@types/react-dom@19.1.7)(@types/react@19.1.8)(react-dom@19.1.1)(react@19.1.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../../packages/ui
       '@tailwindcss/postcss':
         specifier: 4.1.11
         version: 4.1.11
@@ -1647,9 +1665,30 @@ importers:
 
   packages/ui:
     dependencies:
+      '@radix-ui/react-radio-group':
+        specifier: ^1.3.7
+        version: 1.3.7(@types/react-dom@19.1.7)(@types/react@19.1.8)(react-dom@19.1.1)(react@19.1.1)
+      '@radix-ui/react-slot':
+        specifier: ^1.2.3
+        version: 1.2.3(@types/react@19.1.8)(react@19.1.1)
+      '@radix-ui/react-tabs':
+        specifier: ^1.1.12
+        version: 1.1.12(@types/react-dom@19.1.7)(@types/react@19.1.8)(react-dom@19.1.1)(react@19.1.1)
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@19.1.1)(react@19.1.1)
       react:
         specifier: ^19
         version: 19.1.1
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -1669,6 +1708,9 @@ importers:
       eslint:
         specifier: ^9.30.0
         version: 9.32.0
+      react-icons:
+        specifier: ^5.5.0
+        version: 5.5.0(react@19.1.1)
       tailwindcss:
         specifier: ^4.1.5
         version: 4.1.11
@@ -11378,7 +11420,6 @@ packages:
       react: '*'
     dependencies:
       react: 19.1.1
-    dev: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -11514,7 +11555,6 @@ packages:
   /react@19.1.1:
     resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
-    dev: false
 
   /read-cmd-shim@5.0.0:
     resolution: {integrity: sha512-SEbJV7tohp3DAAILbEMPXavBjAnMN0tVnh4+9G8ihV4Pq3HYF9h8QNez9zkJ1ILkv9G2BjdzwctznGZXgu/HGw==}

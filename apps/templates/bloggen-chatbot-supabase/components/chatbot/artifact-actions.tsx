@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../botui/tooltip';
 import { artifactDefinitions, UIArtifact } from './artifact';
 import { Dispatch, memo, SetStateAction, useState } from 'react';

@@ -7,7 +7,7 @@ import { PanelLeft } from 'lucide-react';
 
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import { Input } from '@/components/botui/input';
 import { Separator } from '@/components/botui/separator';
 import { Sheet, SheetContent } from '@/components/botui/sheet';

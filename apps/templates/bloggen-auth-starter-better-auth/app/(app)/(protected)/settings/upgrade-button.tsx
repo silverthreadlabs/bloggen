@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@repo/ui/button";
 import { Sparkles, Crown } from "lucide-react";
 
 export default function UpgradeButton() {

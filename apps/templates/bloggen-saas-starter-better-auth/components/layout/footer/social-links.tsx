@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 
 import { FaGithub, FaLinkedinIn, FaRedditAlien } from 'react-icons/fa';
 

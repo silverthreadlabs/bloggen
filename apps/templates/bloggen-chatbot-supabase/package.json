@@ -15,7 +15,7 @@
   "author": "Silverthread Labs Team <silverthreadlabs@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev --port 3008 --turbopack",
+    "dev": "next dev --port 3005 --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -36,6 +36,7 @@
     "supabase:pull": "npx supabase db pull"
   },
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "@ai-sdk/provider": "2.0.0-beta.1",
     "@ai-sdk/react": "2.0.0-beta.6",
     "@ai-sdk/xai": "2.0.0-beta.2",

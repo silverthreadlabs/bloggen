@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import {
   type Dispatch,
   type SetStateAction,
@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Textarea } from '@/components/ui/input';
+import { Textarea } from '@repo/ui/input';
 import { deleteTrailingMessages } from '@/app/(public)/(chatbot)/actions';
 import type { UseChatHelpers } from '@ai-sdk/react';
 import type { ChatMessage } from '@/lib/types';

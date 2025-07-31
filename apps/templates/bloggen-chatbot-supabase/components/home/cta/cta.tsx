@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import { FaRobot, FaArrowRight, FaComments, FaStar, FaRocket, FaPlay, FaChevronRight } from 'react-icons/fa';
 
 export default function CTA() {

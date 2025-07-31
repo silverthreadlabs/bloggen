@@ -11,7 +11,7 @@ import { PreviewAttachment } from './preview-attachment';
 import { Weather } from './weather';
 import equal from 'fast-deep-equal';
 import { cn, sanitizeText } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../botui/tooltip';
 import { MessageEditor } from './message-editor';
 import { DocumentPreview } from './document-preview';

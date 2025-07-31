@@ -28,6 +28,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "@calcom/embed-react": "^1.5.3",
     "@emailjs/browser": "^4.4.1",
     "@next/third-parties": "^15.3.4",

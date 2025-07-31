@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@repo/ui/button";
 import { Settings, User } from "lucide-react";
 
 export function ManageAccount() {

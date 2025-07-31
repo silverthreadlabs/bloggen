@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaGithub, FaRocket } from 'react-icons/fa';
 import { HiSparkles, HiLightningBolt } from 'react-icons/hi';

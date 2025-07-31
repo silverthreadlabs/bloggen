@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaCheck, FaCopy, FaGithub, FaPlay, FaStar, FaUsers, FaRocket, FaCode } from 'react-icons/fa';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import Link from 'next/link';
 
 export default function Hero() {
