@@ -3,14 +3,14 @@
 // import { Metadata } from 'next';
 // import { createPageMetadata } from '@/lib/seo/metadata/create-page-metadata';
 // import Link from 'next/link';
-// import FeatureCard from '@/components/ui/feature-card';
+// import FeatureCard from '@repo/ui/feature-card';
 import { Suspense } from 'react';
 
 import { Metadata } from 'next';
 
 import CalBooking from '@/components/contact/cal-booking';
 import ContactForm from '@/components/contact/contact-form';
-import TabsComponent from '@/components/ui/tabs';
+import TabsComponent from '@repo/ui/tabs';
 import { createPageMetadata } from '@/lib/seo/metadata/create-page-metadata';
 import ContactSchema from '@/lib/seo/schema/contact';
 

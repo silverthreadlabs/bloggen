@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { LogoDark, LogoLight } from '@/components/logo/logo';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 
 import { FaBars, FaTimes } from 'react-icons/fa';
 

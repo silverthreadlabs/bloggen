@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { LogoDark, LogoLight } from '@/components/logo/logo';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -44,7 +44,7 @@ export default function Header({ session }: { session: Session }) {
                         <div className='hidden dark:block'>
                             <LogoDark />
                         </div>
-                        <div className='text-canvas-text mt-0.5 flex text-sm font-bold'>SaaS Starter</div>
+                        <div className='text-canvas-text mt-0.5 flex text-sm font-bold'>SaaS Starter Better Auth</div>
                     </Link>
 
                     {/* Desktop nav - hidden on small screens, visible on md and up */}

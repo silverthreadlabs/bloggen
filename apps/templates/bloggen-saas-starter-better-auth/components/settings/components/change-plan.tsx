@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/button';
 import {
     Dialog,
     DialogContent,
