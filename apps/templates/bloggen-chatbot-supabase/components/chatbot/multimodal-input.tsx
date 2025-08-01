@@ -205,7 +205,11 @@ function PureMultimodalInput({
 
         setAttachments((currentAttachments) => [
           ...currentAttachments,
-          ...successfullyUploadedAttachments,
+          ...successfullyUploadedAttachments.map((attachment) => ({
+            url: attachment?.url || '',
+            name: attachment?.name || '',
+            contentType: attachment?.contentType || '',
+          })),
         ]);
       } catch (error) {
         console.error('Error uploading files!', error);
@@ -304,7 +308,7 @@ function PureMultimodalInput({
         )}
         rows={2}
         autoFocus
-        bare
+        // bare
         onKeyDown={(event) => {
           if (
             event.key === 'Enter' &&
