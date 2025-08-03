@@ -15,8 +15,6 @@ import { baseOptions, linkItems, logo } from '@/app/layout.config';
 
 import { LargeSearchToggle } from 'fumadocs-ui/components/layout/search-toggle';
 import { Sparkles } from 'lucide-react';
-// import { AISearchTrigger } from '@/components/ai';
-// import 'katex/dist/katex.min.css';
 
 
 export default function Layout({ children }: { children: ReactNode }) {
