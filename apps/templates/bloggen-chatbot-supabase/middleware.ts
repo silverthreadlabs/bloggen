@@ -11,14 +11,3 @@ export function middleware(request: NextRequest) {
   // Allow all requests through (no auth)
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: [
-    '/',
-    '/chat/:id',
-    '/api/:path*',
-    '/login',
-    '/register',
-    '/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
-  ],
-};
