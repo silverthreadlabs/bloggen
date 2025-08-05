@@ -13,10 +13,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/',
-    '/chat/:id',
-    '/api/:path*',
-    '/signin',
-  ],
+  matcher: ['/((?!_next|favicon.ico).*)'],
 };
