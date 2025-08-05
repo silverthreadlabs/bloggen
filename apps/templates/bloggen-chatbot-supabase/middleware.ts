@@ -11,7 +11,3 @@ export function middleware(request: NextRequest) {
   // Allow all requests through (no auth)
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: ['/((?!_next|favicon.ico).*)'],
-};
