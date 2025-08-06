@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@repo/ui/avatar';
+import { Badge } from '@repo/ui/badge';
 import { Button } from '@repo/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/card';
 import {
     Dialog,
     DialogClose,
@@ -16,23 +16,23 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from '@/components/ui/dialog';
+} from '@repo/ui/dialog';
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+} from '@repo/ui/dropdown-menu';
 import { Input } from '@repo/ui/input';
-import { Label } from '@/components/ui/label';
+import { Label } from '@repo/ui/label';
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue
-} from '@/components/ui/select';
-import CopyButton from '@/components/ui/copy-button';
+} from '@repo/ui/select';
+import CopyButton from '@repo/ui/copy-button';
 import {
     organization,
     useListOrganizations,

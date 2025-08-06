@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@repo/ui/avatar';
 import { motion } from 'framer-motion';
 import { HiSparkles, HiAcademicCap } from 'react-icons/hi';
 

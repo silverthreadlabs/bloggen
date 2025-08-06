@@ -8,7 +8,7 @@ import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@repo/ui/button';
 
 
 import { baseOptions, linkItems, logo } from '@/app/layout.config';

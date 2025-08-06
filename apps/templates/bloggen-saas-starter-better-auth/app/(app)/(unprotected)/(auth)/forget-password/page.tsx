@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Alert, AlertDescription } from "@repo/ui/alert";
 import { Button } from "@repo/ui/button";
 import {
 	Card,
@@ -9,9 +9,9 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
+} from "@repo/ui/card";
 import { Input } from "@repo/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@repo/ui/label";
 import { client } from "@/lib/auth/auth-client";
 import { AlertCircle, ArrowLeft, CheckCircle2 } from "lucide-react";
 import Link from "next/link";

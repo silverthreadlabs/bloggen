@@ -43,6 +43,11 @@ export const maxDuration = 60;
 let globalStreamContext: ResumableStreamContext | null = null;
 
 export function getStreamContext() {
+  // Skip stream context creation during build time
+  if (process.env.NODE_ENV === 'production' && !process.env.REDIS_URL) {
+    return null;
+  }
+
   if (!globalStreamContext) {
     try {
       globalStreamContext = createResumableStreamContext({
@@ -69,6 +74,11 @@ export function getStreamContext() {
 }
 
 export async function POST(request: Request) {
+  // Skip chat processing during build time
+  if (process.env.NODE_ENV === 'production' && !process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    return new Response(JSON.stringify({ error: 'Chat not configured' }), { status: 400 });
+  }
+
   let requestBody: PostRequestBody;
 
   try {
@@ -118,11 +128,12 @@ export async function POST(request: Request) {
     // Map messagesFromDb to DBMessage shape if needed
     const dbMessages = messagesFromDb.map((msg: any) => ({
       id: msg.id,
-      chatId: msg.chat_id,
+      chat_id: msg.chat_id,
       role: msg.role,
       parts: 'parts' in msg ? msg.parts ?? [] : [],
       attachments: msg.attachments ?? [],
-      createdAt: new Date(msg.created_at),
+      created_at: msg.created_at,
+      user_id: msg.user_id ?? null,
     }));
     const uiMessages = [...convertToUIMessages(dbMessages), message];
 

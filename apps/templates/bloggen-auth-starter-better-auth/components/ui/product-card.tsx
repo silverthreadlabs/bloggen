@@ -3,8 +3,7 @@
 import type React from 'react';
 import { useState } from 'react';
 
-import { Button } from './button';
-import { ThemeToggle } from './theme-toggle';
+import { ThemeToggle } from '@repo/ui/theme-toggle';
 import { Heart } from 'lucide-react';
 
 // Enhanced theme definitions with actual color changes
@@ -98,35 +97,32 @@ const ProductCard: React.FC<ProductCardProps> = ({ className = '' }) => {
                         <div key={key} className='text-center'>
                             <button
                                 onClick={() => handleThemeChange(key as ThemeKey)}
-                                className={`relative h-12 w-12 transform overflow-hidden rounded-full transition-all duration-500 hover:scale-110 hover:cursor-pointer ${
-                                    currentTheme === key ? 'ring-4 ring-blue-400' : ''
-                                }`}>
+                                className={`relative h-12 w-12 transform overflow-hidden rounded-full transition-all duration-500 hover:scale-110 hover:cursor-pointer ${currentTheme === key ? 'ring-4 ring-blue-400' : ''
+                                    }`}>
                                 {/* Canvas color half (top-left) */}
                                 <div
-                                    className={`absolute inset-0 ${
-                                        key === 'amber'
+                                    className={`absolute inset-0 ${key === 'amber'
                                             ? 'bg-[#dad8d8]'
                                             : key === 'modern'
-                                              ? 'bg-[#dad8d8]'
-                                              : key === 'minimal'
-                                                ? 'bg-white'
-                                                : ''
-                                    }`}
+                                                ? 'bg-[#dad8d8]'
+                                                : key === 'minimal'
+                                                    ? 'bg-white'
+                                                    : ''
+                                        }`}
                                     style={{
                                         clipPath: 'polygon(0% 0%, 100% 0%, 0% 100%)'
                                     }}></div>
 
                                 {/* Theme color half (bottom-right) */}
                                 <div
-                                    className={`absolute inset-0 ${
-                                        key === 'amber'
+                                    className={`absolute inset-0 ${key === 'amber'
                                             ? 'bg-amber-500'
                                             : key === 'modern'
-                                              ? 'bg-emerald-500'
-                                              : key === 'minimal'
-                                                ? 'bg-black'
-                                                : ''
-                                    }`}
+                                                ? 'bg-emerald-500'
+                                                : key === 'minimal'
+                                                    ? 'bg-black'
+                                                    : ''
+                                        }`}
                                     style={{
                                         clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)'
                                     }}></div>
@@ -160,6 +156,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ className = '' }) => {
                             </div>
 
                             <button
+                                type='button'
+                                title='Add to Favorites'
                                 className={`rounded-full p-2 hover:cursor-pointer ${theme.buttonSecondary} border transition-all duration-300`}>
                                 <Heart className='h-3 w-3' fill='none' stroke='currentColor' />
                             </button>
