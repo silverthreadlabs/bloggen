@@ -1,8 +1,8 @@
 "use client";
 
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
+import { Button, buttonVariants } from "@repo/ui/button";
+import { Label } from "@repo/ui/label";
+import { Switch } from "@repo/ui/switch";
 
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";

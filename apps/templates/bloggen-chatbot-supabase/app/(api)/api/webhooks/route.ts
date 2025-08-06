@@ -1,12 +1,4 @@
 import Stripe from 'stripe';
-import { stripe } from '@/utils/stripe/config';
-import {
-  upsertProductRecord,
-  upsertPriceRecord,
-  manageSubscriptionStatusChange,
-  deleteProductRecord,
-  deletePriceRecord
-} from '@/utils/supabase/admin';
 
 const relevantEvents = new Set([
   'product.created',
@@ -22,6 +14,25 @@ const relevantEvents = new Set([
 ]);
 
 export async function POST(req: Request) {
+  // Check for required environment variables
+  if (!process.env.STRIPE_WEBHOOK_SECRET || 
+      !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+      !process.env.SUPABASE_SERVICE_ROLE_KEY ||
+      !process.env.STRIPE_SECRET_KEY) {
+    return new Response('Webhook not configured', { status: 400 });
+  }
+
+  // Dynamic imports to prevent build-time evaluation
+  const { getStripe } = await import('@/utils/stripe/config');
+  const {
+    upsertProductRecord,
+    upsertPriceRecord,
+    manageSubscriptionStatusChange,
+    deleteProductRecord,
+    deletePriceRecord
+  } = await import('@/utils/supabase/admin');
+  
+  const stripe = getStripe();
   const body = await req.text();
   const sig = req.headers.get('stripe-signature') as string;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;

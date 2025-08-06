@@ -4,11 +4,11 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription, AlertTitle } from '@repo/ui/alert';
+import { Avatar, AvatarFallback, AvatarImage } from '@repo/ui/avatar';
+import { Badge } from '@repo/ui/badge';
 import { Button } from '@repo/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/card';
 import {
     Dialog,
     DialogContent,
@@ -17,9 +17,9 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from '@/components/ui/dialog';
+} from '@repo/ui/dialog';
 import { Input } from '@repo/ui/input';
-import { Label } from '@/components/ui/label';
+import { Label } from '@repo/ui/label';
 import { client, useSession } from '@/lib/auth/auth-client';
 import { Session } from '@/lib/auth/auth-types';
 import { Edit, User, Mail, X } from 'lucide-react';

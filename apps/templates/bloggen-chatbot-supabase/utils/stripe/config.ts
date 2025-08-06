@@ -1,8 +1,14 @@
 import Stripe from 'stripe';
 
-export const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY_LIVE ?? process.env.STRIPE_SECRET_KEY ?? '',
-  {
+// Create Stripe client dynamically to prevent build-time evaluation
+export const getStripe = () => {
+  const secretKey = process.env.STRIPE_SECRET_KEY_LIVE ?? process.env.STRIPE_SECRET_KEY;
+  
+  if (!secretKey) {
+    throw new Error('Missing Stripe secret key');
+  }
+
+  return new Stripe(secretKey, {
     // https://github.com/stripe/stripe-node#configuration
     // https://stripe.com/docs/api/versioning
     // @ts-ignore
@@ -14,5 +20,8 @@ export const stripe = new Stripe(
       version: '0.0.0',
       url: 'https://github.com/vercel/nextjs-subscription-payments'
     }
-  }
-);
+  });
+};
+
+// For backward compatibility
+export const stripe = getStripe();

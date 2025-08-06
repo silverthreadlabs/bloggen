@@ -3,15 +3,15 @@
 import { useState } from "react";
 import { Button } from "@repo/ui/button";
 import { Input } from "@repo/ui/input";
-import { PasswordInput } from "@/components/ui/password-input";
-import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@repo/ui/password-input";
+import { Label } from "@repo/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
+} from "@repo/ui/select";
 import {
 	Table,
 	TableBody,
@@ -19,7 +19,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@/components/ui/table";
+} from "@repo/ui/table";
 import { toast, Toaster } from "sonner";
 import { client } from "@/lib/auth/auth-client";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -38,17 +38,17 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@/components/ui/dialog";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar } from "@/components/ui/calendar";
+} from "@repo/ui/dialog";
+import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
+import { Calendar } from "@repo/ui/calendar";
 import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@repo/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@repo/ui/badge";
 
 type User = {
 	id: string;

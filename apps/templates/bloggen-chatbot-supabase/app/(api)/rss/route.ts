@@ -2,6 +2,11 @@ import { getBlogPosts } from '@/lib/blog';
 import { siteConfig } from '@/lib/config/site';
 
 export async function GET() {
+    // Skip RSS generation during build time
+    if (process.env.NODE_ENV === 'production' && !process.env.NEXT_PUBLIC_SUPABASE_URL) {
+        return new Response('RSS not configured', { status: 400 });
+    }
+
     const allBlogs = await getBlogPosts();
 
     const itemsXml = allBlogs

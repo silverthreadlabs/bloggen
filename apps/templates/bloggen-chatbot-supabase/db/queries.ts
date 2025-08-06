@@ -20,18 +20,18 @@ import type { VisibilityType } from '@/components/chatbot/visibility-selector';
 import { ChatSDKError } from '@/lib/errors';
 import { supabase } from '@/utils/supabase/client';
 
-// Optionally, if not using email/pass login, you can
-// use the Drizzle adapter for Auth.js / NextAuth
-// https://authjs.dev/reference/adapter/drizzle
-
-// REMOVE all Drizzle/pg imports and client setup
-// import { drizzle } from 'drizzle-orm/postgres-js';
-// import postgres from 'postgres';
-// const client = postgres(process.env.POSTGRES_URL!);
-// const db = drizzle(client);
+// Helper function to check if we're in build mode
+const isBuildMode = () => {
+  return process.env.NODE_ENV === 'production' && !process.env.NEXT_PUBLIC_SUPABASE_URL;
+};
 
 // Only allow reading users with getUser. Do not insert/update users table directly.
 export async function getUser(email: string) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return [];
+  }
+
   try {
     const { data, error } = await supabase
       .from('users')
@@ -64,15 +64,18 @@ export async function saveChat({
   title: string;
   visibility: string;
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return;
+  }
+
   console.log('Saving chat:', { id, user_id: userId, title, visibility });
-  const chatInsert: any = {
+  const { error } = await supabase.from('chats').insert([{
     id,
     title,
     visibility,
     created_at: new Date().toISOString(),
-  };
-  if (userId) chatInsert.user_id = userId;
-  const { error } = await (supabase as any).from('chats').insert([chatInsert]);
+  }]);
   if (error) {
     console.error('Supabase error (saveChat):', error);
     throw new Error('Failed to save chat: ' + error.message);
@@ -80,11 +83,16 @@ export async function saveChat({
 }
 
 export async function deleteChatById({ id }: { id: string }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return null;
+  }
+
   // Delete messages first due to foreign key constraint
-  const { error: msgError } = await (supabase as any).from('messages').delete().eq('chat_id', id);
+  const { error: msgError } = await supabase.from('messages').delete().eq('chat_id', id);
   if (msgError) throw new Error('Failed to delete messages: ' + msgError.message);
   // Delete the chat
-  const { data, error } = await (supabase as any).from('chats').delete().eq('id', id).select();
+  const { data, error } = await supabase.from('chats').delete().eq('id', id).select();
   if (error) throw new Error('Failed to delete chat: ' + error.message);
 
   return data?.[0] || null;
@@ -102,45 +110,44 @@ export async function getChatsByUserId({
   startingAfter: string | null;
   endingBefore: string | null;
 }) {
-  try {
-    if (!id || id === 'public-user') {
-      return { chats: [], hasMore: false };
-    }
-    const query = (supabase as any)
-      .from('chats')
-      .select('*')
-      .eq('user_id', id)
-      .order('created_at', { ascending: false })
-      .limit(limit);
-    const { data, error } = await query;
-    // Debug logging
-    console.log('getChatsByUserId: searching for user_id:', id);
-    console.log('getChatsByUserId: query result:', { data, error });
-    const hasMore = data.length > limit;
-    // Map snake_case to camelCase ONLY for chat history
-    const mappedChats = (hasMore ? data.slice(0, limit) : data).map((chat: any) => ({
-      id: chat.id,
-      createdAt: chat.created_at,
-      title: chat.title,
-      userId: chat.user_id,
-      visibility: chat.visibility,
-    }));
-
-    return {
-      chats: mappedChats,
-      hasMore,
-    };
-  } catch (error) {
-    console.error('getChatsByUserId error:', error);
-    throw new ChatSDKError(
-      'bad_request:database',
-      'Failed to get chats by user id',
-    );
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return [];
   }
+
+  let query = supabase.from('chats').select('*').order('created_at', { ascending: false });
+
+  if (id) {
+    query = query.eq('user_id', id);
+  } else {
+    query = query.is('user_id', null);
+  }
+
+  if (startingAfter) {
+    query = query.lt('created_at', startingAfter);
+  }
+
+  if (endingBefore) {
+    query = query.gt('created_at', endingBefore);
+  }
+
+  const { data, error } = await query.limit(limit);
+
+  if (error) {
+    console.error('Supabase error (getChatsByUserId):', error);
+    throw new Error('Failed to get chats: ' + error.message);
+  }
+
+  return data || [];
 }
 
 export async function getChatById({ id }: { id: string }) {
-  const { data, error } = await (supabase as any).from('chats').select('*').eq('id', id).maybeSingle();
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return null;
+  }
+
+  const { data, error } = await supabase.from('chats').select('*').eq('id', id).maybeSingle();
   if (error && error.code !== 'PGRST116') { // PGRST116: No rows found
     throw new Error('Failed to get chat: ' + error.message);
   }
@@ -170,6 +177,11 @@ export async function saveMessages({
 }: {
   messages: MessageInsert[];
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return;
+  }
+
   const formatted: MessageInsert[] = messages.map((m) => {
     if (!m.id || !m.chat_id || !m.parts || !m.role || !m.created_at) {
       throw new Error('Missing required message fields: id, chat_id, parts, role, or created_at');
@@ -186,7 +198,7 @@ export async function saveMessages({
     };
   });
   console.log('Saving messages:', formatted);
-  const { error } = await (supabase as any).from('messages').insert(formatted);
+  const { error } = await supabase.from('messages').insert(formatted);
   if (error) {
     console.error('Supabase error (saveMessages):', error);
     throw new Error('Failed to save messages: ' + error.message);
@@ -194,7 +206,12 @@ export async function saveMessages({
 }
 
 export async function getMessagesByChatId({ id }: { id: string }) {
-  const { data, error } = await (supabase as any)
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return [];
+  }
+
+  const { data, error } = await supabase
     .from('messages')
     .select('*')
     .eq('chat_id', id)
@@ -213,22 +230,27 @@ export async function voteMessage({
   messageId: string;
   type: 'up' | 'down';
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return { data: null, error: null };
+  }
+
   try {
-    const { data: existingVotes } = await (supabase as any)
+    const { data: existingVotes } = await supabase
       .from('votes')
       .select('*')
       .eq('message_id', messageId)
       .eq('chat_id', chatId);
     if (existingVotes && existingVotes.length > 0) {
 
-      return await (supabase as any)
+      return await supabase
         .from('votes')
         .update({ is_upvoted: type === 'up' })
         .eq('message_id', messageId)
         .eq('chat_id', chatId);
     }
 
-    return await (supabase as any).from('votes').insert({
+    return await supabase.from('votes').insert({
       chat_id: chatId,
       message_id: messageId,
       is_upvoted: type === 'up',
@@ -239,8 +261,13 @@ export async function voteMessage({
 }
 
 export async function getVotesByChatId({ id }: { id: string }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return { data: [], error: null };
+  }
+
   try {
-    return await (supabase as any).from('votes').select('*').eq('chat_id', id);
+    return await supabase.from('votes').select('*').eq('chat_id', id);
   } catch (error) {
     throw new ChatSDKError(
       'bad_request:database',
@@ -262,8 +289,13 @@ export async function saveDocument({
   content: string;
   userId: string | null;
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return { data: null, error: null };
+  }
+
   try {
-    return await (supabase as any)
+    return await supabase
       .from('documents')
       .insert([{
         id,
@@ -271,7 +303,7 @@ export async function saveDocument({
         kind,
         content,
         user_id: userId,
-        created_at: new Date(),
+        created_at: new Date().toISOString(),
       }])
       .select();
   } catch (error) {
@@ -280,8 +312,13 @@ export async function saveDocument({
 }
 
 export async function getDocumentsById({ id }: { id: string }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return [];
+  }
+
   try {
-    const documents = await (supabase as any)
+    const documents = await supabase
       .from('documents')
       .select('*')
       .eq('id', id)
@@ -297,8 +334,13 @@ export async function getDocumentsById({ id }: { id: string }) {
 }
 
 export async function getDocumentById({ id }: { id: string }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return null;
+  }
+
   try {
-    const { data } = await (supabase as any)
+    const { data } = await supabase
       .from('documents')
       .select('*')
       .eq('id', id)
@@ -320,14 +362,19 @@ export async function deleteDocumentsByIdAfterTimestamp({
   id: string;
   timestamp: Date;
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return { data: null, error: null };
+  }
+
   try {
-    await (supabase as any)
+    await supabase
       .from('suggestions')
       .delete()
       .eq('document_id', id)
       .gt('document_created_at', timestamp);
 
-    return await (supabase as any)
+    return await supabase
       .from('documents')
       .delete()
       .eq('id', id)
@@ -346,8 +393,13 @@ export async function saveSuggestions({
 }: {
   suggestions: Array<Suggestion>;
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return { data: null, error: null };
+  }
+
   try {
-    return await (supabase as any).from('suggestions').insert(suggestions);
+    return await supabase.from('suggestions').insert(suggestions);
   } catch (error) {
     throw new ChatSDKError(
       'bad_request:database',
@@ -361,8 +413,13 @@ export async function getSuggestionsByDocumentId({
 }: {
   documentId: string;
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return [];
+  }
+
   try {
-    const { data } = await (supabase as any)
+    const { data } = await supabase
       .from('suggestions')
       .select('*')
       .eq('document_id', documentId);
@@ -378,8 +435,13 @@ export async function getSuggestionsByDocumentId({
 }
 
 export async function getMessageById({ id }: { id: string }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return [];
+  }
+
   try {
-    const { data } = await (supabase as any).from('messages').select('*').eq('id', id);
+    const { data } = await supabase.from('messages').select('*').eq('id', id);
     
     return data;
   } catch (error) {
@@ -397,8 +459,13 @@ export async function deleteMessagesByChatIdAfterTimestamp({
   chatId: string;
   timestamp: Date;
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return;
+  }
+
   try {
-    const messagesToDelete = await (supabase as any)
+    const messagesToDelete = await supabase
       .from('messages')
       .select('id')
       .eq('chat_id', chatId)
@@ -407,13 +474,13 @@ export async function deleteMessagesByChatIdAfterTimestamp({
     const messageIds = messagesToDelete.data?.map((message: any) => message.id) || [];
 
     if (messageIds.length > 0) {
-      await (supabase as any)
+      await supabase
         .from('votes')
         .delete()
         .eq('chat_id', chatId)
         .in('message_id', messageIds);
 
-      return await (supabase as any)
+      return await supabase
         .from('messages')
         .delete()
         .eq('chat_id', chatId)
@@ -434,8 +501,13 @@ export async function updateChatVisiblityById({
   chatId: string;
   visibility: 'private' | 'public';
 }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return { data: null, error: null };
+  }
+
   try {
-    return await (supabase as any).from('chats').update({ visibility }).eq('id', chatId);
+    return await supabase.from('chats').update({ visibility }).eq('id', chatId);
   } catch (error) {
     throw new ChatSDKError(
       'bad_request:database',
@@ -448,20 +520,24 @@ export async function getMessageCountByUserId({
   id,
   differenceInHours,
 }: { id: string; differenceInHours: number }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return 0;
+  }
+
   try {
     const twentyFourHoursAgo = new Date(
       Date.now() - differenceInHours * 60 * 60 * 1000,
     );
 
-    const [stats] = await (supabase as any)
+    const { count } = await supabase
       .from('messages')
-      .select({ count: (supabase as any).from('messages').select('*', { count: 'exact' }) })
+      .select('*', { count: 'exact', head: true })
       .eq('user_id', id)
       .gt('created_at', twentyFourHoursAgo)
-      .eq('role', 'user')
-      .then(({ count }: any) => [{ count }]);
+      .eq('role', 'user');
 
-    return stats?.count ?? 0;
+    return count ?? 0;
   } catch (error) {
     throw new ChatSDKError(
       'bad_request:database',
@@ -478,9 +554,14 @@ export async function createStreamId({
   streamId: string;
   chatId: string;
 }) {
-  const { error } = await (supabase as any)
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return;
+  }
+
+  const { error } = await supabase
     .from('streams')
-    .insert([{ id: streamId, chat_id: chatId, created_at: new Date() }]);
+    .insert([{ id: streamId, chat_id: chatId, created_at: new Date().toISOString() }]);
   if (error) {
     console.error('Supabase error (createStreamId):', error);
     throw new ChatSDKError(
@@ -491,8 +572,13 @@ export async function createStreamId({
 }
 
 export async function getStreamIdsByChatId({ chatId }: { chatId: string }) {
+  // Skip database operations during build time
+  if (isBuildMode()) {
+    return [];
+  }
+
   try {
-    const streamIds = await (supabase as any)
+    const streamIds = await supabase
       .from('streams')
       .select('id')
       .eq('chat_id', chatId)

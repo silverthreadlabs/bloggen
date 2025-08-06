@@ -6,13 +6,13 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 // import { SubscriptionTierLabel } from '@/components/tier-labels';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription, AlertTitle } from '@repo/ui/alert';
+import { Avatar, AvatarFallback, AvatarImage } from '@repo/ui/avatar';
+import { Badge } from '@repo/ui/badge';
 import { Button } from '@repo/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import CopyButton from '@/components/ui/copy-button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@repo/ui/card';
+import { Checkbox } from '@repo/ui/checkbox';
+import CopyButton from '@repo/ui/copy-button';
 import {
     Dialog,
     DialogContent,
@@ -21,11 +21,11 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from '@/components/ui/dialog';
+} from '@repo/ui/dialog';
 import { Input } from '@repo/ui/input';
-import { Label } from '@/components/ui/label';
-import { PasswordInput } from '@/components/ui/password-input';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Label } from '@repo/ui/label';
+import { PasswordInput } from '@repo/ui/password-input';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@repo/ui/table';
 import { client, signOut, useSession } from '@/lib/auth/auth-client';
 import { Session } from '@/lib/auth/auth-types';
 // import { Subscription } from '@better-auth/stripe';
