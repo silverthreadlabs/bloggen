@@ -1,4 +1,4 @@
-import { cn } from './lib/utils';
+import { cn } from '@/lib/utils';
 
 import { type VariantProps, cva } from 'class-variance-authority';
 import React from 'react';
@@ -6,7 +6,7 @@ import React from 'react';
 // Assuming you have a cn utility function
 
 const inputVariants = cva(
-    'w-full px-4 py-3 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-solid',
+    'w-full px-4 py-3 rounded-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary-solid',
     {
         variants: {
             variant: {

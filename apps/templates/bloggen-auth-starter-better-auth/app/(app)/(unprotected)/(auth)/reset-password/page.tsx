@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Alert, AlertDescription } from "@repo/ui/alert";
 import { Button } from "@repo/ui/button";
 import {
 	Card,
@@ -8,9 +8,9 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { PasswordInput } from "@/components/ui/password-input";
+} from "@repo/ui/card";
+import { Label } from "@repo/ui/label";
+import { PasswordInput } from "@repo/ui/password-input";
 import { client } from "@/lib/auth/auth-client";
 import { AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";

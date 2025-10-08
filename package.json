@@ -24,5 +24,8 @@
       "sharp",
       "unrs-resolver"
     ]
+  },
+  "dependencies": {
+    "@radix-ui/react-avatar": "^1.1.10"
   }
 }
