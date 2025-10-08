@@ -1,13 +1,21 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Playwright starts the dev server and requires a 200 status to begin the tests
   if (pathname.startsWith('/ping')) {
     return new Response('pong', { status: 200 });
   }
 
-  // Allow all requests through (no auth)
   return NextResponse.next();
 }
+
+// Add this config
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except static files and images
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+  ],
+};
