@@ -99,7 +99,7 @@ export default function Header({ session }: { session: Session }) {
                                             await signOut({
                                                 fetchOptions: {
                                                     onSuccess: () => {
-                                                        window.location.href = '/';
+                                                        window.location.href = '/sign-in';
                                                     }
                                                 }
                                             });
@@ -200,7 +200,7 @@ export default function Header({ session }: { session: Session }) {
                                                 await signOut({
                                                     fetchOptions: {
                                                         onSuccess: () => {
-                                                            window.location.href = '/';
+                                                            window.location.href = '/sign-in';
                                                         }
                                                     }
                                                 });
