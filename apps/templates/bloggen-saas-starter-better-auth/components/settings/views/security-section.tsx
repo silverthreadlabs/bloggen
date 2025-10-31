@@ -285,7 +285,7 @@ export default function SecuritySection({ session, activeSessions: initialActive
                                     await signOut({
                                         fetchOptions: {
                                             onSuccess() {
-                                                router.refresh();
+                                                window.location.href = '/sign-in';
                                             }
                                         }
                                     });
