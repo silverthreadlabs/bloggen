@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@repo/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import CopyButton from '@/components/ui/copy-button';
@@ -18,12 +17,13 @@ import {
     DialogTitle,
     DialogTrigger
 } from '@/components/ui/dialog';
-import { Input } from '@repo/ui/input';
 import { Label } from '@/components/ui/label';
 import { PasswordInput } from '@/components/ui/password-input';
 import { client, signOut, useSession } from '@/lib/auth/auth-client';
 import { Session } from '@/lib/auth/auth-types';
 import { MobileIcon } from '@radix-ui/react-icons';
+import { Button } from '@repo/ui/button';
+import { Input } from '@repo/ui/input';
 
 import {
     Key,
@@ -135,9 +135,11 @@ export default function SecuritySection({ session, activeSessions: initialActive
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className='flex flex-col sm:flex-row items-start sm:items-center gap-2'>
+                                        <div className='flex flex-col items-start gap-2 sm:flex-row sm:items-center'>
                                             {isCurrentSession && (
-                                                <Badge variant="outline" className='bg-success-bg text-success-text border-success-border'>
+                                                <Badge
+                                                    variant='outline'
+                                                    className='bg-success-bg text-success-text border-success-border'>
                                                     Current
                                                 </Badge>
                                             )}
@@ -345,8 +347,8 @@ function TwoFactorQRDialog() {
                             onClick={async () => {
                                 if (twoFaPassword.length < 8) {
                                     toast.error('Password must be at least 8 characters');
-                                    
-return;
+
+                                    return;
                                 }
                                 await client.twoFactor.getTotpUri(
                                     { password: twoFaPassword },
@@ -440,8 +442,8 @@ function TwoFactorToggleDialog() {
                         onClick={async () => {
                             if (twoFaPassword.length < 6 && !twoFactorVerifyURI) {
                                 toast.error('Password must be at least 8 characters');
-                                
-return;
+
+                                return;
                             }
                             setIsPendingTwoFa(true);
 
@@ -572,13 +574,13 @@ function ChangePasswordDialog() {
                         onClick={async () => {
                             if (newPassword !== confirmPassword) {
                                 toast.error('Passwords do not match');
-                                
-return;
+
+                                return;
                             }
                             if (newPassword.length < 8) {
                                 toast.error('Password must be at least 8 characters');
-                                
-return;
+
+                                return;
                             }
                             setLoading(true);
                             const res = await client.changePassword({
