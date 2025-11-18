@@ -12,7 +12,7 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+} from '@repo/ui/dropdown-menu';
 import { signOut } from '@/lib/auth/auth-client';
 import { Session } from '@/lib/auth/auth-types';
 
