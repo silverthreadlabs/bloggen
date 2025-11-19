@@ -53,9 +53,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         {/* <Header /> */}
                         <RootProvider>
                             {/* <Wrapper> */}
-                                <WrapperWithQuery>
-                                    {children}
-                                </WrapperWithQuery>
+                            <WrapperWithQuery>
+                                {children}
+                            </WrapperWithQuery>
                             {/* </Wrapper> */}
                         </RootProvider>
                         {/* <Footer /> */}

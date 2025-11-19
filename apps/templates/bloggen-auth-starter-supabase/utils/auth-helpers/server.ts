@@ -18,8 +18,8 @@ export async function redirectToPath(path: string) {
 export async function SignOut(formData: FormData) {
   const pathName = String(formData.get('pathName')).trim();
 
-  const supabase = await  createClient();
-  const { error } =  await supabase.auth.signOut();
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signOut();
 
   if (error) {
     return getErrorRedirect(
@@ -33,7 +33,7 @@ export async function SignOut(formData: FormData) {
 }
 
 export async function signInWithEmail(formData: FormData) {
-  const cookieStore =  await cookies();
+  const cookieStore = await cookies();
   const callbackURL = getURL('/auth/callback');
 
   const email = String(formData.get('email')).trim();
@@ -47,7 +47,7 @@ export async function signInWithEmail(formData: FormData) {
     );
   }
 
-  const supabase = await  createClient();
+  const supabase = await createClient();
   let options = {
     emailRedirectTo: callbackURL,
     shouldCreateUser: true
@@ -101,7 +101,7 @@ export async function requestPasswordUpdate(formData: FormData) {
     );
   }
 
-  const supabase = await  createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: callbackURL
@@ -132,12 +132,12 @@ export async function requestPasswordUpdate(formData: FormData) {
 }
 
 export async function signInWithPassword(formData: FormData) {
-  const cookieStore = await  cookies();
+  const cookieStore = await cookies();
   const email = String(formData.get('email')).trim();
   const password = String(formData.get('password')).trim();
   let redirectPath: string;
 
-  const supabase = await  createClient();
+  const supabase = await createClient();
   const { error, data } = await supabase.auth.signInWithPassword({
     email,
     password
@@ -178,7 +178,7 @@ export async function signUp(formData: FormData) {
     );
   }
 
-  const supabase = await  createClient();
+  const supabase = await createClient();
   const { error, data } = await supabase.auth.signUp({
     email,
     password,
@@ -236,7 +236,7 @@ export async function updatePassword(formData: FormData) {
     );
   }
 
-  const supabase = await  createClient();
+  const supabase = await createClient();
   const { error, data } = await supabase.auth.updateUser({
     password
   });
@@ -277,7 +277,7 @@ export async function updateEmail(formData: FormData) {
     );
   }
 
-  const supabase = await  createClient();
+  const supabase = await createClient();
 
   const callbackUrl = getURL(
     getStatusRedirect('/account', 'Success!', `Your email has been updated.`)
@@ -306,21 +306,37 @@ export async function updateEmail(formData: FormData) {
 }
 
 export async function updateName(formData: FormData) {
-  // Get form data
   const fullName = String(formData.get('fullName')).trim();
+  const supabase = await createClient();
 
-  const supabase = await  createClient();
-  const { error, data } = await supabase.auth.updateUser({
+  // First, update the auth user metadata
+  const { error: authError, data: authData } = await supabase.auth.updateUser({
     data: { full_name: fullName }
   });
 
-  if (error) {
+  if (authError) {
     return getErrorRedirect(
       '/account',
       'Your name could not be updated.',
-      error.message
+      authError.message
     );
-  } else if (data.user) {
+  }
+
+  // Then, update the public.users table
+  if (authData.user) {
+    const { error: dbError } = await supabase
+      .from('users')
+      .update({ full_name: fullName })
+      .eq('id', authData.user.id);
+
+    if (dbError) {
+      return getErrorRedirect(
+        '/account',
+        'Your name could not be updated in the database.',
+        dbError.message
+      );
+    }
+
     return getStatusRedirect(
       '/account',
       'Success!',

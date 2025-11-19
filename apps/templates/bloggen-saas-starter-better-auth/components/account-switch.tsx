@@ -28,7 +28,7 @@ export default function AccountSwitcher({
 	const { data: currentUser } = useSession();
 	const [open, setOpen] = useState(false);
 	const router = useRouter();
-	
+
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
@@ -56,7 +56,7 @@ export default function AccountSwitcher({
 					<CommandList>
 						<CommandGroup heading="Current Account">
 							<CommandItem
-								onSelect={() => {}}
+								onSelect={() => { }}
 								className="text-sm w-full justify-between"
 								key={currentUser?.user.id}
 							>

@@ -7,6 +7,7 @@ create table users (
   id uuid references auth.users not null primary key,
   full_name text,
   avatar_url text,
+  email text,
   -- The customer's billing address, stored in JSON format.
   billing_address jsonb,
   -- Stores your customer's payment instruments.
@@ -22,8 +23,8 @@ create policy "Can update own user data." on users for update using (auth.uid() 
 create function public.handle_new_user() 
 returns trigger as $$
 begin
-  insert into public.users (id, full_name, avatar_url)
-  values (new.id, new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'avatar_url');
+  insert into public.users (id, full_name, avatar_url, email)
+  values (new.id, new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'avatar_url', new.email);
   return new;
 end;
 $$ language plpgsql security definer;
@@ -143,3 +144,38 @@ create policy "Can only view own subs data." on subscriptions for select using (
  */
 drop publication if exists supabase_realtime;
 create publication supabase_realtime for table products, prices;
+
+
+/**
+ * CHATS
+ * Table for chat sessions, owned by users.
+ */
+create table public.chats (
+  id uuid primary key default uuid_generate_v4(),
+  user_id uuid references public.users(id) not null,
+  chat_model text check (chat_model in ('chat-model', 'chat-model-reasoning')),
+  visibility text check (visibility in ('public', 'private')),
+  created_at timestamptz default now()
+);
+alter table public.chats enable row level security;
+create policy "Can view own chats." on public.chats for select using (auth.uid() = user_id);
+create policy "Can insert own chats." on public.chats for insert with check (auth.uid() = user_id);
+create policy "Can update own chats." on public.chats for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "Can delete own chats." on public.chats for delete using (auth.uid() = user_id);
+
+/**
+ * MESSAGES
+ * Table for messages within chats.
+ */
+create table public.messages (
+  id uuid primary key default uuid_generate_v4(),
+  chat_id uuid references public.chats(id) not null,
+  role text not null,
+  parts jsonb not null,
+  created_at timestamptz default now()
+);
+alter table public.messages enable row level security;
+create policy "Can view own messages." on public.messages for select using (exists (select 1 from public.chats where public.chats.id = public.messages.chat_id and public.chats.user_id = auth.uid()));
+create policy "Can insert own messages." on public.messages for insert with check (exists (select 1 from public.chats where public.chats.id = public.messages.chat_id and public.chats.user_id = auth.uid()));
+create policy "Can update own messages." on public.messages for update using (exists (select 1 from public.chats where public.chats.id = public.messages.chat_id and public.chats.user_id = auth.uid())) with check (exists (select 1 from public.chats where public.chats.id = public.messages.chat_id and public.chats.user_id = auth.uid()));
+create policy "Can delete own messages." on public.messages for delete using (exists (select 1 from public.chats where public.chats.id = public.messages.chat_id and public.chats.user_id = auth.uid()));

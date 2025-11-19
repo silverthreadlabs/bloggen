@@ -36,7 +36,7 @@ export default async function DashboardPage() {
                 <UserCard
                     session={JSON.parse(JSON.stringify(session))}
                     activeSessions={JSON.parse(JSON.stringify(activeSessions))}
-                    // subscription={subscriptions.find((sub) => sub.status === 'active' || sub.status === 'trialing')}
+                // subscription={subscriptions.find((sub) => sub.status === 'active' || sub.status === 'trialing')}
                 />
                 <OrganizationCard
                     session={JSON.parse(JSON.stringify(session))}

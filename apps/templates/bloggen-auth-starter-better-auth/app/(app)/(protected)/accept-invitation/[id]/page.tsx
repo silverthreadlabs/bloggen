@@ -84,7 +84,7 @@ export default function InvitationPage() {
 				} else {
 					setInvitation(res.data);
 				}
-				
+
 				return;
 			})
 			.catch((error) => {

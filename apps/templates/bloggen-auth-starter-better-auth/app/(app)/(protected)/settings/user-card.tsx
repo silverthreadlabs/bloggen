@@ -406,7 +406,7 @@ export default function UserCard(props: {
                                                 setIsPendingTwoFa(false);
                                                 setTwoFaPassword('');
                                             }}>
-                                            session?.user.twoFactorEnabled ? "Disable 2FA" : "Enable 2FA"
+                                            {session?.user.twoFactorEnabled ? "Disable 2FA" : "Enable 2FA"}
                                         </Button>
                                     </DialogFooter>
                                 </DialogContent>
