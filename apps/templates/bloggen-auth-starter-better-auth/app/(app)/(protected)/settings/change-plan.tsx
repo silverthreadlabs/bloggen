@@ -6,9 +6,9 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+} from "@repo/ui/dialog";
+import { Label } from "@repo/ui/label";
+import { RadioGroup, RadioGroupItem } from "@repo/ui/radio-group";
 import { client } from "@/lib/auth/auth-client";
 import { cn } from "@/lib/utils";
 import { ArrowUpFromLine, CreditCard, RefreshCcw } from "lucide-react";

@@ -8,10 +8,10 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
+} from "@repo/ui/card";
 import { Input } from "@repo/ui/input";
-import { PasswordInput } from "@/components/ui/password-input";
-import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@repo/ui/password-input";
+import { Label } from "@repo/ui/label";
 import { useState } from "react";
 import Image from "next/image";
 import { Loader2, X } from "lucide-react";

@@ -14,10 +14,10 @@ import {
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Mdx, { createRelativeLink } from 'fumadocs-ui/mdx';
-import { Mermaid } from '@/components/ui/mermaid';
+import { Mermaid } from '@repo/ui/mermaid';
 import { UiOverview } from '@/components/ui-overview';
 import { Callout } from 'fumadocs-ui/components/callout';
-import { Wrapper } from '@/components/ui/wrapper';
+import { Wrapper } from '@repo/ui/wrapper';
 import { getPageTreePeers } from 'fumadocs-core/server';
 import { Card, Cards } from 'fumadocs-ui/components/card';
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
@@ -30,7 +30,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/components/ui/hover-card';
+} from '@repo/ui/hover-card';
 import * as Twoslash from 'fumadocs-twoslash/ui';
 import {
   PageArticle,

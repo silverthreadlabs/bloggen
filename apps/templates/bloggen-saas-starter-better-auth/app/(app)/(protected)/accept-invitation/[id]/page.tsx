@@ -8,11 +8,11 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
+} from "@repo/ui/card";
 import { CheckIcon, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@repo/ui/skeleton";
 import { client, organization } from "@/lib/auth/auth-client";
 import { InvitationError } from "./invitation-error";
 

@@ -2,7 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@repo/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
 import {
 	Dialog,
 	DialogClose,
@@ -12,22 +12,22 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@repo/ui/dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@repo/ui/dropdown-menu";
 import { Input } from "@repo/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@repo/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
+} from "@repo/ui/select";
 import {
 	organization,
 	useListOrganizations,
@@ -39,7 +39,7 @@ import { Loader2, MailPlus, Building2, Users, UserPlus, Settings } from "lucide-
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
-import CopyButton from "@/components/ui/copy-button";
+import CopyButton from "@repo/ui/copy-button";
 import Image from "next/image";
 
 export function OrganizationCard(props: {

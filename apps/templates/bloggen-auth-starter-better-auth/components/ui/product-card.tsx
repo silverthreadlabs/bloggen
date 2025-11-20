@@ -3,7 +3,7 @@
 import type React from 'react';
 import { useState } from 'react';
 
-import { Button } from './button';
+import { Button } from '@repo/ui/button';
 import { ThemeToggle } from './theme-toggle';
 import { Heart } from 'lucide-react';
 

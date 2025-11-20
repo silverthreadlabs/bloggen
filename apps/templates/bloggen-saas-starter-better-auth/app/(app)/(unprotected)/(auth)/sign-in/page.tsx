@@ -2,7 +2,7 @@
 
 import SignIn from "@/components/auth/sign-in";
 import { SignUp } from "@/components/auth/sign-up";
-import { Tabs } from "@/components/ui/tabs2";
+import { Tabs } from "@repo/ui/tabs2";
 import { client } from "@/lib/auth/auth-client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

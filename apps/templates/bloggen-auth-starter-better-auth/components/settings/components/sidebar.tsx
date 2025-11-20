@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-import { Button } from '../../ui/button';
+import { Button } from '@repo/ui/button';
 import { Menu, X } from 'lucide-react';
 import { FiArrowRight } from 'react-icons/fi';
 

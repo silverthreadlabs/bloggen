@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 
 import { minimalCSS, modernCSS, subtleCSS } from '@/lib/utils/theme';
 
-import { Button } from '../../ui/button';
-import { ThemeToggle } from '../../ui/theme-toggle';
+import { Button } from '@repo/ui/button';
+import { ThemeToggle } from '@repo/ui/theme-toggle';
 import { Heart } from 'lucide-react';
 
 interface PlayGroundCardProps {

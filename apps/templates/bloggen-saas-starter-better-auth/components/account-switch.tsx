@@ -7,14 +7,14 @@ import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@repo/ui/popover";
 import {
 	Command,
 	CommandGroup,
 	CommandItem,
 	CommandList,
 	CommandSeparator,
-} from "@/components/ui/command";
+} from "@repo/ui/command";
 import { ChevronDown, PlusCircle } from "lucide-react";
 import { Session } from "@/lib/auth/auth-types";
 import { client, useSession } from "@/lib/auth/auth-client";

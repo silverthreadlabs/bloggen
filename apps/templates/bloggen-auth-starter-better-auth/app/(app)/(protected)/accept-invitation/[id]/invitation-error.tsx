@@ -5,7 +5,7 @@ import {
 	CardDescription,
 	CardContent,
 	CardFooter,
-} from "@/components/ui/card";
+} from "@repo/ui/card";
 import { Button } from "@repo/ui/button";
 import { AlertCircle } from "lucide-react";
 import Link from "next/link";

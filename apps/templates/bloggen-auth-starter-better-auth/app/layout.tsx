@@ -15,7 +15,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 
 import './global.css';
 import { RootProvider } from 'fumadocs-ui/provider';
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@repo/ui/sonner";
 
 const manrope = Manrope({
     subsets: ['latin'],
