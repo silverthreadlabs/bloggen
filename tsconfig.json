@@ -1,9 +1,14 @@
 {
-    "files": [],
-    "references": [
-      {
-        "path": "./packages/ui"
-      }
-    ]
-  }
-  
+  "files": [],
+  "references": [
+    { "path": "./packages/ui" },
+    { "path": "./apps/web" },
+    { "path": "./apps/docs" },
+    { "path": "./templates/bloggen-auth-starter-better-auth" },
+    { "path": "./templates/bloggen-auth-starter-supabase" },
+    { "path": "./templates/bloggen-chatbot-supabase" },
+    { "path": "./templates/bloggen-saas-starter-better-auth" },
+    { "path": "./templates/bloggen-saas-starter-supabase" },
+    { "path": "./templates/bloggen-seo-starter" }
+  ]
+}

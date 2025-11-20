@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "jsx": "preserve",
+      "strict": true,
+      "strictNullChecks": true,
+      "esModuleInterop": true,
+      "allowJs": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "incremental": true,
+      "baseUrl": ".",
+      "paths": {
+        "@repo/ui/*": ["src/*"]
+      },
+      "plugins": []
+    },
+    "include": ["src"],
+    "exclude": ["dist", "build", "node_modules"]
+  }
+
+// {
+//   "compilerOptions": {
+//     "composite": true,
+//     "declaration": true,
+//     "declarationMap": true,
+//     "emitDeclarationOnly": true,
+//     "outDir": "dist",
+//     "rootDir": "src",
+//     "strict": true,
+//     "moduleResolution": "node",
+//     "skipLibCheck": true,
+//     "esModuleInterop": true,
+//     "forceConsistentCasingInFileNames": true
+//   },
+//   "include": ["src"]
+// }
+
+  
