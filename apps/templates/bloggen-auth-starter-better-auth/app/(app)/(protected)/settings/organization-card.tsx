@@ -60,7 +60,7 @@ export function OrganizationCard(props: {
 	const { data } = useSession();
 	const session = data || props.session;
 
-	const currentMember = optimisticOrg?.members.find(
+	const currentMember = optimisticOrg?.members?.find(
 		(member) => member.userId === session?.user.id,
 	);
 
@@ -173,7 +173,7 @@ export function OrganizationCard(props: {
 										{optimisticOrg?.name}
 									</h3>
 									<p className="text-sm text-canvas-text">
-										{optimisticOrg?.members.length || 1} members
+										{optimisticOrg?.members?.length || 1} members
 									</p>
 								</div>
 							</div>
@@ -187,7 +187,7 @@ export function OrganizationCard(props: {
 								<Users className="h-4 w-4 text-canvas-text" />
 								<h4 className="font-medium text-canvas-text-contrast">Members</h4>
 								<span className="text-sm text-canvas-text">
-									({optimisticOrg?.members.length || 1})
+									({optimisticOrg?.members?.length || 1})
 								</span>
 							</div>
 							{optimisticOrg && (currentMember?.role === "owner" || currentMember?.role === "admin") && (
@@ -198,7 +198,7 @@ export function OrganizationCard(props: {
 							)}
 						</div>
 						<div className="space-y-2">
-							{optimisticOrg?.members.map((member) => (
+							{optimisticOrg?.members?.map((member) => (
 								<div
 									key={member.id}
 									className="flex items-center justify-between rounded-sm border border-canvas-border bg-canvas-bg p-3"
