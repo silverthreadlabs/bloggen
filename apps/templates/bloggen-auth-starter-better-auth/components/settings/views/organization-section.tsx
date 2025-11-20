@@ -7,8 +7,8 @@ import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@repo/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import CopyButton from '@/components/ui/copy-button';
+import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/card';
+import CopyButton from '@repo/ui/copy-button';
 import {
     Dialog,
     DialogClose,
@@ -18,16 +18,16 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from '@/components/ui/dialog';
+} from '@repo/ui/dialog';
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+} from '@repo/ui/dropdown-menu';
 import { Input } from '@repo/ui/input';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@repo/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@repo/ui/select';
 import { organization, useListOrganizations, useSession } from '@/lib/auth/auth-client';
 import { ActiveOrganization, Session } from '@/lib/auth/auth-types';
 import { ChevronDownIcon, PlusIcon } from '@radix-ui/react-icons';

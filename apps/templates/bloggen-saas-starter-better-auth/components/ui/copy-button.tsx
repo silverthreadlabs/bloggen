@@ -6,7 +6,7 @@ import {
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@repo/ui/tooltip";
 
 interface CopyButtonProps {
 	textToCopy: string;
