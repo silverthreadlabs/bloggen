@@ -17,7 +17,6 @@
 //     "paths": {
 //       // "@/components/*": ["components/*"]
 //       "@/*": ["./*"]
-
 //     },
 //     "incremental": true,
 //     "plugins": [
@@ -35,12 +34,17 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "noEmit": true,
     "plugins": [
-      { "name": "next" }
-    ]
+      {
+        "name": "next"
+      }
+    ],
+    "skipLibCheck": true
   },
   "include": [
     "next-env.d.ts",
@@ -49,7 +53,7 @@
     "next.config.ts",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
-
-
