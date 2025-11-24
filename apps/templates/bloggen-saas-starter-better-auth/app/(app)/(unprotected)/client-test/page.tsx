@@ -10,10 +10,10 @@ import {
 	CardHeader,
 	CardTitle,
 	CardFooter,
-} from "@/components/ui/card";
+} from "@repo/ui/card";
 import { Input } from "@repo/ui/input";
-import { PasswordInput } from "@/components/ui/password-input";
-import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@repo/ui/password-input";
+import { Label } from "@repo/ui/label";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 

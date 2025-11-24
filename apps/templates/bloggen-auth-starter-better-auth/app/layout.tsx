@@ -15,7 +15,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 
 import './global.css';
 import { RootProvider } from 'fumadocs-ui/provider';
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@repo/ui/sonner";
 
 const manrope = Manrope({
     subsets: ['latin'],
@@ -53,9 +53,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         {/* <Header /> */}
                         <RootProvider>
                             {/* <Wrapper> */}
-                                <WrapperWithQuery>
-                                    {children}
-                                </WrapperWithQuery>
+                            <WrapperWithQuery>
+                                {children}
+                            </WrapperWithQuery>
                             {/* </Wrapper> */}
                         </RootProvider>
                         {/* <Footer /> */}

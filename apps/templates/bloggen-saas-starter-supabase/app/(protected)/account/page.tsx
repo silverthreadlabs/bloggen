@@ -1,4 +1,3 @@
-
 import CustomerPortalForm from '@/components/authui/AccountForms/CustomerPortalForm';
 import EmailForm from '@/components/authui/AccountForms/EmailForm';
 import NameForm from '@/components/authui/AccountForms/NameForm';
@@ -38,13 +37,13 @@ export default async function Account() {
           {/* <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-primary-solid/10 to-primary-solid/5 border border-primary-solid/20 rounded-full text-primary-solid font-medium text-sm mb-6 backdrop-blur-sm">
             🔧 Account Settings
           </div> */}
-          
+
           <h1 className="text-canvas-text-contrast mb-6 text-4xl leading-tight font-bold tracking-tight md:text-6xl">
             Your <span className="from-primary-solid via-primary-text to-primary-text-contrast bg-gradient-to-r bg-clip-text text-transparent">Account</span>
           </h1>
-          
+
           <p className="max-w-3xl mx-auto text-canvas-text mb-8 text-xl leading-relaxed font-normal tracking-normal md:text-2xl">
-            Manage your subscription, update your profile, and control your account settings. 
+            Manage your subscription, update your profile, and control your account settings.
             We've partnered with Stripe for simplified and secure billing.
           </p>
         </div>
@@ -67,7 +66,7 @@ export default async function Account() {
                 </div>
                 Profile Information
               </h2>
-              
+
               {/* Profile Forms Grid - Responsive */}
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                 <NameForm userName={userDetails?.full_name ?? ''} />

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@repo/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/card';
 import {
     Dialog,
     DialogClose,
@@ -16,23 +16,23 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from '@/components/ui/dialog';
+} from '@repo/ui/dialog';
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+} from '@repo/ui/dropdown-menu';
 import { Input } from '@repo/ui/input';
-import { Label } from '@/components/ui/label';
+import { Label } from '@repo/ui/label';
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue
-} from '@/components/ui/select';
-import CopyButton from '@/components/ui/copy-button';
+} from '@repo/ui/select';
+import CopyButton from '@repo/ui/copy-button';
 import {
     organization,
     useListOrganizations,
@@ -65,7 +65,7 @@ export default function OrganizationSection({ session, activeOrganization }: Org
     const { data } = useSession();
     const currentSession = data || session;
 
-    const currentMember = optimisticOrg?.members.find(
+    const currentMember = optimisticOrg?.members?.find(
         (member) => member.userId === currentSession?.user.id
     );
 
@@ -197,7 +197,7 @@ export default function OrganizationSection({ session, activeOrganization }: Org
                                     {optimisticOrg?.name}
                                 </h3>
                                 <p className="text-canvas-text">
-                                    {optimisticOrg?.members.length || 1} member{(optimisticOrg?.members.length || 1) !== 1 ? 's' : ''}
+                                    {optimisticOrg?.members?.length || 1} member{(optimisticOrg?.members?.length || 1) !== 1 ? 's' : ''}
                                 </p>
                             </div>
                         </div>
@@ -216,7 +216,7 @@ export default function OrganizationSection({ session, activeOrganization }: Org
                             <div>
                                 <CardTitle className="text-canvas-text-contrast">Team Members</CardTitle>
                                 <p className="text-canvas-text text-sm">
-                                    {optimisticOrg?.members.length || 1} member{(optimisticOrg?.members.length || 1) !== 1 ? 's' : ''}
+                                    {optimisticOrg?.members?.length || 1} member{(optimisticOrg?.members?.length || 1) !== 1 ? 's' : ''}
                                 </p>
                             </div>
                         </div>
@@ -230,7 +230,7 @@ export default function OrganizationSection({ session, activeOrganization }: Org
                 </CardHeader>
                 <CardContent className="p-6">
                     <div className="space-y-3">
-                        {optimisticOrg?.members.map((member) => (
+                        {optimisticOrg?.members?.map((member) => (
                             <div
                                 key={member.id}
                                 className="flex items-center justify-between p-4 rounded-sm border border-canvas-border bg-canvas-bg-subtle"

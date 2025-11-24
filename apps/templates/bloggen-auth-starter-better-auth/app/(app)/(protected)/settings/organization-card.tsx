@@ -2,7 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@repo/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@repo/ui/card";
 import {
 	Dialog,
 	DialogClose,
@@ -12,22 +12,22 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@repo/ui/dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@repo/ui/dropdown-menu";
 import { Input } from "@repo/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@repo/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
+} from "@repo/ui/select";
 import {
 	organization,
 	useListOrganizations,
@@ -39,7 +39,7 @@ import { Loader2, MailPlus, Building2, Users, UserPlus, Settings } from "lucide-
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
-import CopyButton from "@/components/ui/copy-button";
+import CopyButton from "@repo/ui/copy-button";
 import Image from "next/image";
 
 export function OrganizationCard(props: {
@@ -60,7 +60,7 @@ export function OrganizationCard(props: {
 	const { data } = useSession();
 	const session = data || props.session;
 
-	const currentMember = optimisticOrg?.members.find(
+	const currentMember = optimisticOrg?.members?.find(
 		(member) => member.userId === session?.user.id,
 	);
 
@@ -173,7 +173,7 @@ export function OrganizationCard(props: {
 										{optimisticOrg?.name}
 									</h3>
 									<p className="text-sm text-canvas-text">
-										{optimisticOrg?.members.length || 1} members
+										{optimisticOrg?.members?.length || 1} members
 									</p>
 								</div>
 							</div>
@@ -187,7 +187,7 @@ export function OrganizationCard(props: {
 								<Users className="h-4 w-4 text-canvas-text" />
 								<h4 className="font-medium text-canvas-text-contrast">Members</h4>
 								<span className="text-sm text-canvas-text">
-									({optimisticOrg?.members.length || 1})
+									({optimisticOrg?.members?.length || 1})
 								</span>
 							</div>
 							{optimisticOrg && (currentMember?.role === "owner" || currentMember?.role === "admin") && (
@@ -198,7 +198,7 @@ export function OrganizationCard(props: {
 							)}
 						</div>
 						<div className="space-y-2">
-							{optimisticOrg?.members.map((member) => (
+							{optimisticOrg?.members?.map((member) => (
 								<div
 									key={member.id}
 									className="flex items-center justify-between rounded-sm border border-canvas-border bg-canvas-bg p-3"

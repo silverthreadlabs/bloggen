@@ -7,9 +7,9 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
+} from "@repo/ui/card";
 import { Input } from "@repo/ui/input";
-import { Label } from "@/components/ui/label";
+import { Label } from "@repo/ui/label";
 import { client } from "@/lib/auth/auth-client";
 import { AlertCircle, CheckCircle2, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
